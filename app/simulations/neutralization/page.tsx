@@ -27,7 +27,7 @@ export default function NeutralizationPage() {
     const [waterCount, setWaterCount] = useState(0);
     const [acidAdded, setAcidAdded] = useState(0);
     const [baseAdded, setBaseAdded] = useState(0);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | null>(null);
 
     const getParticleColor = (type: string) => {
         switch (type) {
