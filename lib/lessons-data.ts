@@ -1,4 +1,4 @@
-import { Lesson, LessonSection, ChemicalEquation } from './lessons-data';
+// Lesson data types and content
 
 export interface Lesson {
     id: string;
