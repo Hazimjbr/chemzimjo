@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { MoleculeData, getCategoryColor, getCategoryName } from '@/lib/molecules-data';
+import { MoleculeData, getCategoryColor, getCategoryName, getMoleculeById } from '@/lib/molecules-data';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Info, ZoomIn, ZoomOut, RotateCcw, Loader2 } from 'lucide-react';
 
@@ -26,19 +26,24 @@ const Scene3D = dynamic(() => import('./Scene3D'), {
 });
 
 interface MoleculeViewerProps {
-    molecule: MoleculeData;
+    molecule?: MoleculeData;
+    moleculeId?: string;
     compact?: boolean;
     showControls?: boolean;
 }
 
 export default function MoleculeViewer({
-    molecule,
+    molecule: moleculeProp,
+    moleculeId,
     compact = false,
     showControls = true
 }: MoleculeViewerProps) {
     const [showInfo, setShowInfo] = useState(false);
     const [zoom, setZoom] = useState(1);
     const [key, setKey] = useState(0);
+
+    // Resolve molecule from prop or ID
+    const molecule = moleculeProp || (moleculeId ? getMoleculeById(moleculeId) : undefined);
 
     if (!molecule) return null;
 
