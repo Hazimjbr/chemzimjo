@@ -204,7 +204,7 @@ export async function updateStreak(userId: string): Promise<{ currentStreak: num
 // Unlock achievement
 export async function unlockAchievement(userId: string, achievementId: string): Promise<boolean> {
     try {
-        const userRef = doc(db, 'users', odbc);
+        const userRef = doc(db, 'users', userId);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
