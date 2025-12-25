@@ -22,8 +22,9 @@ export default function NeutralizationPage() {
     const [reactionCount, setReactionCount] = useState(0);
 
     // Initialize container dimensions
-    const width = 300;
-    const height = 400;
+    const containerWidth = 500;
+    const containerHeight = 380;
+    const padding = 20;
 
     const addAcid = () => {
         const newParticles: Particle[] = [];
@@ -31,16 +32,16 @@ export default function NeutralizationPage() {
             newParticles.push({
                 id: Math.random().toString(),
                 type: 'H',
-                x: Math.random() * width,
-                y: 0,
+                x: padding + Math.random() * (containerWidth - padding * 2),
+                y: padding,
                 vx: (Math.random() - 0.5) * 2,
                 vy: Math.random() * 2 + 2
             });
             newParticles.push({
                 id: Math.random().toString(),
                 type: 'Cl',
-                x: Math.random() * width,
-                y: 0,
+                x: padding + Math.random() * (containerWidth - padding * 2),
+                y: padding,
                 vx: (Math.random() - 0.5) * 2,
                 vy: Math.random() * 2 + 2
             });
@@ -54,16 +55,16 @@ export default function NeutralizationPage() {
             newParticles.push({
                 id: Math.random().toString(),
                 type: 'OH',
-                x: Math.random() * width,
-                y: 0,
+                x: padding + Math.random() * (containerWidth - padding * 2),
+                y: padding,
                 vx: (Math.random() - 0.5) * 2,
                 vy: Math.random() * 2 + 2
             });
             newParticles.push({
                 id: Math.random().toString(),
                 type: 'Na',
-                x: Math.random() * width,
-                y: 0,
+                x: padding + Math.random() * (containerWidth - padding * 2),
+                y: padding,
                 vx: (Math.random() - 0.5) * 2,
                 vy: Math.random() * 2 + 2
             });
@@ -80,13 +81,24 @@ export default function NeutralizationPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setParticles(prev => {
-                let nextParticles = prev.map(p => ({
-                    ...p,
-                    x: p.x + p.vx,
-                    y: p.y + p.vy,
-                    vx: (p.x + p.vx < 0 || p.x + p.vx > width) ? -p.vx : p.vx,
-                    vy: (p.y + p.vy < 0 || p.y + p.vy > height) ? -p.vy : p.vy,
-                }));
+                let nextParticles = prev.map(p => {
+                    let newX = p.x + p.vx;
+                    let newY = p.y + p.vy;
+                    let newVx = p.vx;
+                    let newVy = p.vy;
+
+                    // Bounce off walls with padding
+                    if (newX < padding || newX > containerWidth - padding) {
+                        newVx = -p.vx;
+                        newX = Math.max(padding, Math.min(containerWidth - padding, newX));
+                    }
+                    if (newY < padding || newY > containerHeight - padding) {
+                        newVy = -p.vy;
+                        newY = Math.max(padding, Math.min(containerHeight - padding, newY));
+                    }
+
+                    return { ...p, x: newX, y: newY, vx: newVx, vy: newVy };
+                });
 
                 // Check collisions and reactions
                 const newWater: Particle[] = [];
@@ -218,12 +230,14 @@ export default function NeutralizationPage() {
 
                                 {/* Simulation View */}
                                 <div style={{
-                                    height: 400,
+                                    width: containerWidth,
+                                    height: containerHeight,
                                     background: 'var(--color-bg-tertiary)',
                                     borderRadius: 'var(--radius-xl)',
                                     position: 'relative',
                                     overflow: 'hidden',
-                                    border: '1px solid var(--color-border)'
+                                    border: '2px solid var(--color-border)',
+                                    margin: '0 auto'
                                 }}>
                                     <AnimatePresence>
                                         {particles.map(p => (
