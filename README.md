@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧪 ChemZimJO - الكيمياء التفاعلية
 
-## Getting Started
+> موقع تعليمي تفاعلي شامل لمادة الحموض والقواعد - المنهاج الوطني الأردني 2025
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Three.js](https://img.shields.io/badge/Three.js-3D-green?logo=three.js)](https://threejs.org/)
+
+![ChemZimJO Preview](https://raw.githubusercontent.com/hazim/chemzimjo/main/preview.png)
+
+## ✨ المميزات
+
+- 📚 **8 دروس شاملة** - تغطي كامل وحدة الحموض والقواعد
+- 🧬 **جزيئات 3D تفاعلية** - 21 جزيء مع عرض ثلاثي الأبعاد
+- 🧪 **محاكاة مختبرية** - مقياس pH، المعايرة، الكواشف
+- 📝 **اختبارات تفاعلية** - مع تصحيح فوري ونقاط XP
+- 🎮 **نظام Gamification** - مستويات، إنجازات، تحديات يومية
+- 🔥 **Streaks** - تتبع أيام الدراسة المتتالية
+- 🌙 **وضع داكن/فاتح** - تبديل سهل
+- 🤖 **مساعد AI** - للإجابة على الأسئلة
+- 📱 **تصميم متجاوب** - يعمل على جميع الأجهزة
+
+## 🚀 التشغيل
 
 ```bash
+# تثبيت التبعيات
+npm install
+
+# تشغيل المشروع
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ثم افتح [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ التقنيات
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** CSS Variables + Glassmorphism
+- **3D:** Three.js + React Three Fiber
+- **Auth:** NextAuth.js (Google)
+- **Animations:** Framer Motion
 
-## Learn More
+## 📁 هيكل المشروع
 
-To learn more about Next.js, take a look at the following resources:
+```
+chemzimjo/
+├── app/                    # صفحات التطبيق
+│   ├── lessons/           # الدروس
+│   ├── simulations/       # المحاكاة
+│   ├── quizzes/           # الاختبارات
+│   ├── dashboard/         # لوحة التقدم
+│   └── admin/             # لوحة الإدارة
+├── components/             # المكونات
+│   ├── visual/3d/         # مكونات 3D
+│   ├── gamification/      # نظام النقاط
+│   └── ui/                # واجهة المستخدم
+├── lib/                    # البيانات والوظائف
+└── contexts/               # React Contexts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 المطور
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**حازم** - [GitHub](https://github.com/hazim)
 
-## Deploy on Vercel
+## 📄 الرخصة
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT License - يمكنك استخدام المشروع بحرية
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+<div align="center">
+  <sub>صُنع بـ ❤️ للطلاب الأردنيين</sub>
+</div>
